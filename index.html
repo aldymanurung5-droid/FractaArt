@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>FractaArt | Eksplorasi Dunia Fraktal</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- =========================
+         HERO
+    ========================== -->
+
+    <header class="hero">
+
+        <div class="hero-content">
+
+            <div class="logo">
+                FRACTAART
+            </div>
+
+            <h1>
+                Eksplorasi Dunia Fraktal
+            </h1>
+
+            <p>
+                Visualisasi pola fraktal menggunakan konsep
+                rekursi dalam matematika diskrit.
+            </p>
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================
+         INTRODUCTION
+    ========================== -->
+
+    <section class="container intro">
+
+        <div class="card">
+
+            <span class="section-tag">
+                MATEMATIKA DISKRIT
+            </span>
+
+            <h2>
+                🌿 Apa itu Fraktal?
+            </h2>
+
+            <p>
+                Fraktal adalah pola geometris yang memiliki struktur
+                berulang. Pola tersebut dapat terbentuk melalui proses
+                rekursif, yaitu suatu proses yang memanggil dirinya
+                sendiri dengan ukuran atau tingkat yang lebih kecil.
+            </p>
+
+            <p>
+                Pada FractaArt, konsep rekursi digunakan untuk membuat
+                berbagai pola seperti pohon fraktal, segitiga Sierpiński,
+                dan Koch Snowflake.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         GENERATOR
+    ========================== -->
+
+    <main class="container">
+
+        <section class="generator-section">
+
+            <div class="section-heading">
+
+                <span class="section-tag">
+                    FRACTAL GENERATOR
+                </span>
+
+                <h2>
+                    🎨 Pengaturan Fraktal
+                </h2>
+
+                <p>
+                    Pilih jenis fractal dan atur parameternya
+                    secara interaktif.
+                </p>
+
+            </div>
+
+
+            <div class="generator-grid">
+
+
+                <!-- =========================
+                     CONTROL PANEL
+                ========================== -->
+
+                <div class="control-panel">
+
+
+                    <!-- FRACTAL TYPE -->
+
+                    <div class="control-group">
+
+                        <label for="fractalType">
+                            Jenis Fractal
+                        </label>
+
+                        <select id="fractalType">
+
+                            <option value="tree">
+                                🌳 Fractal Tree
+                            </option>
+
+                            <option value="sierpinski">
+                                🔺 Sierpiński Triangle
+                            </option>
+
+                            <option value="koch">
+                                ❄️ Koch Snowflake
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- ITERATION -->
+
+                    <div class="control-group">
+
+                        <label for="iteration">
+                            Iterasi
+                        </label>
+
+                        <div class="slider-row">
+
+                            <input
+                                type="range"
+                                id="iteration"
+                                min="1"
+                                max="10"
+                                value="6"
+                            >
+
+                            <span id="iterationValue">
+                                6
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- ANGLE -->
+
+                    <div
+                        class="control-group"
+                        id="angleControl"
+                    >
+
+                        <label for="angle">
+                            Sudut
+                        </label>
+
+                        <div class="slider-row">
+
+                            <input
+                                type="range"
+                                id="angle"
+                                min="5"
+                                max="60"
+                                value="25"
+                            >
+
+                            <span id="angleValue">
+                                25°
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- RATIO -->
+
+                    <div
+                        class="control-group"
+                        id="ratioControl"
+                    >
+
+                        <label for="ratio">
+                            Rasio
+                        </label>
+
+                        <div class="slider-row">
+
+                            <input
+                                type="range"
+                                id="ratio"
+                                min="0.50"
+                                max="0.80"
+                                step="0.01"
+                                value="0.70"
+                            >
+
+                            <span id="ratioValue">
+                                0.70
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- COLOR -->
+
+                    <div class="control-group">
+
+                        <label for="color">
+                            Warna Fraktal
+                        </label>
+
+                        <input
+                            type="color"
+                            id="color"
+                            value="#20c965"
+                        >
+
+                    </div>
+
+
+                    <!-- BUTTONS -->
+
+                    <div class="button-group">
+
+                        <button
+                            type="button"
+                            id="generateBtn"
+                            class="primary-btn"
+                        >
+                            🌱 Generate Fractal
+                        </button>
+
+                        <button
+                            type="button"
+                            id="downloadBtn"
+                            class="secondary-btn"
+                        >
+                            ⬇️ Download Fractal
+                        </button>
+
+                        <button
+                            type="button"
+                            id="resetBtn"
+                            class="reset-btn"
+                        >
+                            🔄 Reset
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =========================
+                     CANVAS
+                ========================== -->
+
+                <div class="canvas-panel">
+
+                    <div class="canvas-header">
+
+                        <div>
+
+                            <span class="section-tag">
+                                VISUALISASI
+                            </span>
+
+                            <h3>
+                                🌳 Motif Fraktal
+                            </h3>
+
+                        </div>
+
+                        <div
+                            class="status-dot"
+                            title="Live Preview"
+                        >
+                        </div>
+
+                    </div>
+
+                    <canvas
+                        id="fractalCanvas"
+                        width="700"
+                        height="500"
+                    ></canvas>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             STATISTICS
+        ========================== -->
+
+        <section class="card stats-card">
+
+            <div class="stats-heading">
+
+                <div>
+
+                    <span class="section-tag">
+                        DATA FRAKTAL
+                    </span>
+
+                    <h2>
+                        📊 Informasi Fractal
+                    </h2>
+
+                </div>
+
+                <p id="statsDescription">
+                    Parameter dan pertumbuhan struktur fractal.
+                </p>
+
+            </div>
+
+
+            <div class="stats-grid">
+
+
+                <div class="stat-box">
+
+                    <span>
+                        Iterasi
+                    </span>
+
+                    <strong id="statIteration">
+                        6
+                    </strong>
+
+                </div>
+
+
+                <div class="stat-box">
+
+                    <span id="statLabel2">
+                        Sudut
+                    </span>
+
+                    <strong id="statValue2">
+                        25°
+                    </strong>
+
+                </div>
+
+
+                <div class="stat-box">
+
+                    <span id="statLabel3">
+                        Rasio
+                    </span>
+
+                    <strong id="statValue3">
+                        0.70
+                    </strong>
+
+                </div>
+
+
+                <div class="stat-box">
+
+                    <span id="statLabel4">
+                        Cabang
+                    </span>
+
+                    <strong id="statValue4">
+                        63
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             RECURSION
+        ========================== -->
+
+        <section class="card explanation">
+
+            <div class="section-heading">
+
+                <span class="section-tag">
+                    KONSEP
+                </span>
+
+                <h2>
+                    🔁 Bagaimana Rekursi Membentuk Fraktal?
+                </h2>
+
+                <p>
+                    FractaArt menggunakan dua bagian utama
+                    dalam algoritma rekursif.
+                </p>
+
+            </div>
+
+
+            <div class="steps">
+
+
+                <div class="step">
+
+                    <div class="step-number">
+                        01
+                    </div>
+
+                    <h3>
+                        Base Case
+                    </h3>
+
+                    <p>
+                        Rekursi berhenti ketika nilai iterasi
+                        mencapai kondisi dasar.
+                    </p>
+
+                    <code>
+                        if (iteration &lt;= 0)
+                    </code>
+
+                </div>
+
+
+                <div class="step">
+
+                    <div class="step-number">
+                        02
+                    </div>
+
+                    <h3>
+                        Recursive Case
+                    </h3>
+
+                    <p>
+                        Fungsi memanggil dirinya sendiri dengan
+                        nilai iterasi yang lebih kecil.
+                    </p>
+
+                    <code>
+                        iteration - 1
+                    </code>
+
+                </div>
+
+
+                <div class="step">
+
+                    <div class="step-number">
+                        03
+                    </div>
+
+                    <h3>
+                        Pola Berulang
+                    </h3>
+
+                    <p>
+                        Pengulangan tersebut menghasilkan struktur
+                        kompleks dari aturan sederhana.
+                    </p>
+
+                    <code>
+                        f(n) → f(n - 1)
+                    </code>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             MATHEMATICS
+        ========================== -->
+
+        <section class="card mathematics">
+
+            <span class="section-tag">
+                MATEMATIKA
+            </span>
+
+            <h2>
+                📐 Fraktal dan Matematika Diskrit
+            </h2>
+
+            <p>
+                Fraktal menunjukkan bagaimana proses sederhana yang
+                dilakukan secara berulang dapat menghasilkan struktur
+                yang kompleks.
+            </p>
+
+
+            <div class="formula-box">
+
+                <div class="formula">
+                    2<sup>n</sup> − 1
+                </div>
+
+                <span>
+                    Struktur pohon biner
+                </span>
+
+            </div>
+
+
+            <p class="math-note">
+                Untuk pohon biner penuh dengan kedalaman tertentu,
+                jumlah node dapat berkembang secara eksponensial.
+                Hal ini memperlihatkan hubungan antara rekursi,
+                struktur diskrit, dan pertumbuhan eksponensial.
+            </p>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer>
+
+        <div class="footer-logo">
+            FRACTAART
+        </div>
+
+        <p>
+            Discrete Mathematics Project
+        </p>
+
+        <p class="footer-small">
+            Dibangun dengan HTML, CSS, JavaScript & Rekursi
+        </p>
+
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
